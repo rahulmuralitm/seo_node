@@ -15,7 +15,26 @@ exports.scanWebsite = async (req, res) => {
     // Fetch HTML
     const fetchResult = await fetchService.fetchHtml(url);
     if (!fetchResult.success) {
-      return res.status(500).json({ error: 'Failed to fetch the website.' });
+      const statusCode = fetchResult.statusCode || 500;
+      const errorMessage = fetchResult.error || 'Failed to fetch the website.';
+
+      // Log detailed error for debugging
+      console.error('Fetch failed:', {
+        url,
+        error: fetchResult.error,
+        errorCode: fetchResult.errorCode,
+        statusCode: fetchResult.statusCode
+      });
+
+      return res.status(statusCode >= 400 && statusCode < 600 ? statusCode : 500)
+        .json({
+          error: errorMessage,
+          details: {
+            url,
+            errorCode: fetchResult.errorCode,
+            statusCode: fetchResult.statusCode
+          }
+        });
     }
 
     const { html, pageSize, responseTime, headers, finalUrl } = fetchResult;

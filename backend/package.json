@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test-fetch.js",
+    "test-fetch": "node test-fetch.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,7 @@
     "axios": "^1.13.6",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
     "express": "^5.2.1",
     "puppeteer": "^24.39.1"
   }
