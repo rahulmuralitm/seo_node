@@ -30,7 +30,7 @@ exports.fetchHtml = async (url) => {
       finalUrl: response.request?.res?.responseUrl || url
     };
   } catch (error) {
-    console.error(`Failed to fetch ${url}:`, error.message);
+    console.error(`Failed to fetch ${url}:`, error);
     return { success: false, error: error.message };
   }
 };
