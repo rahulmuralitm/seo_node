@@ -6,7 +6,7 @@ const recommendationEngine = require('../utils/recommendations');
 exports.scanWebsite = async (req, res) => {
   try {
     console.log(req.body);
-
+    console.log("123")
     const { url } = req.body;
     if (!url || !url.startsWith('http')) {
       return res.status(400).json({ error: 'Valid URL is required.' });
