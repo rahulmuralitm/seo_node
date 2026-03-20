@@ -71,7 +71,7 @@ exports.fetchHtml = async (url, retries = parseInt(process.env.MAX_RETRIES) || 3
         // Increased timeout for hosted environments
         timeout: process.env.NODE_ENV === 'production'
           ? parseInt(process.env.FETCH_TIMEOUT_PRODUCTION) || 30000
-          : parseInt(process.env.FETCH_TIMEOUT_DEVELOPMENT) || 15000,
+          : parseInt(process.env.FETCH_TIMEOUT_DEVELOPMENT) || 30000,
         maxContentLength: 10 * 1024 * 1024, // Increased to 10MB
         maxRedirects: 5,
         validateStatus: function (status) {
